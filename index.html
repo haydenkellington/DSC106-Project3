@@ -4,20 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Landscape change | MODIS comparison</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="comparison-v2.css">
   <script defer src="assets/d3.v7.min.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="comparison-v2.js"></script>
 </head>
 <body>
 <main class="page">
   <header class="heading">
-    <div><p class="eyebrow">NASA MODIS / TERRA <span> · </span> LANDSCAPE COMPARISON</p><h1>One landscape.<br><em>Two moments.</em></h1></div>
+    <div><p class="eyebrow">NASA MODIS / TERRA <span> · </span> LANDSCAPE COMPARISON</p><h1>One landscape. <em>Two moments.</em></h1></div>
     <p class="intro">How does a landscape look across different observations? Compare satellite imagery from three events, and explore the same area across dates and color bands.</p>
   </header>
   <section class="explorer" aria-label="Satellite image comparison">
     <div class="toolbar">
       <div class="field event"><label for="event">EVENT</label><select id="event"></select></div>
-      <fieldset class="field bands"><legend>IMAGE TYPE</legend><div class="segmented"><label><input type="radio" name="bands" value="true" checked><span>Natural color</span></label><label><input type="radio" name="bands" value="false"><span>False color · 7-2-1</span></label></div></fieldset>
+      <fieldset class="field bands"><legend>IMAGE TYPE</legend><div class="segmented"><label><input type="radio" name="bands" value="true"><span>Natural color</span></label><label><input type="radio" name="bands" value="false" checked><span>False color · 7-2-1</span></label></div></fieldset>
     </div>
     <div class="comparison-head"><div><p class="eyebrow">COMPARE OBSERVATIONS</p><h2 id="event-title"></h2></div><p id="event-summary"></p></div>
     <div class="date-controls">
@@ -26,7 +26,7 @@
       <div class="field"><label for="later">RIGHT IMAGE</label><select id="later"></select><p id="later-note" class="date-note"></p></div>
     </div>
     <div class="viewer-wrap">
-      <div id="viewer" class="viewer"></div>
+      <div id="viewer" class="viewer"><img class="fallback" src="assets/dixie-2021-09-21-false.jpg" alt="MODIS false-color image of the Dixie Fire region on September 21, 2021"></div>
       <div class="image-label left" id="left-label"></div><div class="image-label right" id="right-label"></div>
       <div class="zoom-controls" aria-label="Image zoom controls"><button id="zoom-in" type="button" aria-label="Zoom in">+</button><button id="zoom-out" type="button" aria-label="Zoom out">−</button><button id="zoom-reset" type="button">Reset</button></div>
     </div>
