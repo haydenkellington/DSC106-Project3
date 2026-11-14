@@ -129,12 +129,31 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px s
     <p>The main interaction we picked was the swipe divider over two lined-up images of the same place. You can easily drag across one spot and watch it change. The swipe divider seemed to be the most intuitive as it allowed the viewer to manually change between the two dates. We also have other interactions where it allows the viewer to pick the event and the dates to compare with more freedom. Lastly, the natural color was kept as an option using a toggle between false color and natural color. This was used because it helps the viewer see the real landscape which could help people recognize the landscape easier.</p>
     <p>We had other alternatives that we ended up passing on. For example, we had a version where there was side-by-side images, an opacity blend, an animated timeline, and a separate zoom view. However, these side-by-side images made your eyes jump back and forth from both the images. Additionally, the opacity blend mixed clouds and smoke from different days into colors that were misleading. The timeline made the unevenly spaced dates look more like a smooth progression. Therefore, we ultimately chose the swipe because it made comparing two dates a lot easier. The landscapes all lined up so the changes in the landscape can be more accurately interpreted. But some things were kept, such as the zoom, so viewers can get a closer look at specific areas of the landscape.</p>
     <h3>Development process</h3>
-    <p>Template: replace the prompts below with your team’s own answers.</p>
+<ul>
+  <li>
+    <strong>Team contributions:</strong> We split the work by stage, with each member taking the lead on different parts while still weighing in on shared decisions.
     <ul>
-      <li><strong>Team contributions:</strong> Describe how the work was divided among team members.</li>
-      <li><strong>Time spent:</strong> Estimate the total development time in people-hours.</li>
-      <li><strong>Process:</strong> Describe how development went and which aspects took the most time.</li>
+      <li><strong>Hayden:</strong> Developed and implemented most of the initial visualizations for the checkpoint. He also helped the team decide which of those visualizations should become the final design, since he had built and tested most of them and knew their strengths and weaknesses firsthand.</li>
+      <li><strong>David:</strong> Worked on the initial checkpoint visualizations, then took on the final visualization, including the swipe divider, event and date selectors, and the natural/false color toggle. He also worked on the project writeup.</li>
+      <li><strong>Nathan:</strong> Brainstormed the different concepts used for the checkpoint visualizations, which gave us a range of interaction ideas to compare against each other. He also worked on the project writeup.</li>
     </ul>
+  </li>
+  <li>
+    <strong>Time spent:</strong> The checkpoint took about 2&ndash;3 hours, since we had to develop 5&ndash;6 static visualizations of the same fire imagery. Deciding which type of visualization to use as the final one took the longest of any step, because we wanted to compare the options carefully rather than pick the first one that looked good. Building the final visualization then took roughly the same amount of time as the checkpoint, as we had to add the interactive pieces (the draggable divider, dropdowns, zoom and pan, and the color key) and test that they worked together.
+  </li>
+  <li>
+    <strong>Process:</strong> We worked on the checkpoint visualizations first and only chose the final design afterward. For the checkpoint, we built several versions that showed the same event in different ways, using MODIS imagery from NASA GIBS:
+    <ul>
+      <li><strong>Earlier and later images, side by side:</strong> Two images of the same area with date labels. This was simple and easy to read, but it forced the viewer's eyes to jump back and forth to spot what changed.</li>
+      <li><strong>Opacity comparison:</strong> A slider that fades between the earlier and later image. This showed change in place, but blending mixed clouds and smoke from different days into colors that were misleading.</li>
+      <li><strong>Timeline:</strong> Date buttons and a play option to step through the sequence of observations. This showed progression, but because our dates were hand-picked and unevenly spaced, it made the changes look like a smooth, continuous progression when they were not.</li>
+      <li><strong>Separate zoom view:</strong> A closer look at specific areas of the landscape. We did not keep this as its own view, but we kept zoom as a feature in the final version.</li>
+    </ul>
+    After testing these, we compared how each one handled interactivity, such as sliders and timeframes, and how easy it was to read what was actually changing on the landscape. We chose the swipe divider because it let viewers compare two dates over the exact same spot, and its alignment meant changes came from the landscape rather than the framing.
+    <br><br>
+    For the final version, we added interactions on top of the swipe divider: dropdowns to pick the event and the left and right dates, a button to swap the two images, a natural color / false color toggle, and zoom and pan controls. We also added a false color key and a short note on each date explaining cloud or smoke cover, because the false color imagery is not intuitive on its own. Choosing the final visualization and building it took the most time overall. Fine-tuning the details (making sure every image pair covered the same area, writing accurate notes for each date, and making sure the color key was clear) took additional effort beyond the main interaction.
+  </li>
+</ul>
   </section>
 </main>
 <script>
