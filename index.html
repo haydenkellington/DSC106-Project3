@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Landscape change | MODIS comparison</title>
+  <title>How do wildfires and floods change the landscape? | MODIS comparison</title>
   <style>
 :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #202b32; background: #d9dfca; }
 * { box-sizing: border-box; }
@@ -12,7 +12,7 @@ body { margin: 0; }
 .heading { display: flex; justify-content: space-between; align-items: end; gap: 36px; border-bottom: 1px solid #bbc3c7; padding-bottom: 18px; margin-bottom: 20px; }
 h1, h2, p { margin: 0; }
 h1 { font-size: 27px; line-height: 1.2; font-weight: 650; letter-spacing: -.02em; }
-.subtitle { margin-top: 6px; color: #58666d; font-size: 13px; }
+.subtitle { margin-top: 6px; max-width: 640px; color: #58666d; font-size: 13px; line-height: 1.45; }
 .intro { max-width: 440px; color: #4b5b63; font-size: 14px; line-height: 1.5; }
 .explorer { background: #fff; border: 1px solid #d1d7d9; padding: 22px; }
 .toolbar { display: flex; justify-content: space-between; align-items: end; gap: 24px; border-bottom: 1px solid #e1e5e6; padding-bottom: 20px; }
@@ -56,6 +56,12 @@ input[type=range] { display: block; width: 100%; margin: 7px 0 4px; accent-color
 footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-top: 1px solid #d7dedf; margin-top: 20px; padding-top: 16px; color: #58666d; font-size: 12px; }
 a { color: #225875; text-underline-offset: 2px; }
 button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid #b06a21; outline-offset: 2px; }
+.color-key { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin-top: 12px; padding: 10px 12px; background: #f4f6f2; border: 1px solid #dfe4df; }
+.color-key[hidden] { display: none; }
+.key-title { color: #394951; font-size: 12px; font-weight: 600; }
+.color-key ul { display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 0; padding: 0; list-style: none; }
+.color-key li { display: flex; align-items: center; gap: 6px; color: #4b5b63; font-size: 12px; }
+.color-key i { width: 14px; height: 14px; border: 1px solid #8e9aa0; border-radius: 2px; }
 @media (max-width: 700px) {
  .page { padding: 20px 12px 36px; } .heading { display: block; padding-bottom: 14px; margin-bottom: 14px; } h1 { font-size: 23px; } .intro { margin-top: 10px; font-size: 13px; }
  .explorer { padding: 14px; } .toolbar { display: block; padding-bottom: 16px; } .event { width: 100%; margin-bottom: 14px; } .segmented { width: fit-content; }
@@ -66,6 +72,7 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px s
   .writeup { margin-top: 28px; padding: 22px; background: #fff; border: 1px solid #d1d7d9; }
 .writeup h2 { margin: 0 0 8px; }
 .writeup h3 { font-size: 15px; margin: 22px 0 8px; }
+.writeup p + p { margin-top: 12px; }
 .writeup p, .writeup li { color: #506068; font-size: 14px; line-height: 1.6; }
 .writeup ul { margin: 0; padding-left: 21px; }
 .writeup li + li { margin-top: 8px; }
@@ -76,7 +83,7 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px s
 <body>
 <main class="page">
   <header class="heading">
-    <div><h1>Satellite imagery comparison</h1><p class="subtitle">NASA MODIS · Terra</p></div>
+    <div><h1>How do wildfires and floods change the landscape?</h1><p class="subtitle">NASA MODIS Terra corrected reflectance, rendered by NASA GIBS at 960 × 640 px. Each event keeps one fixed area across 4–5 hand-picked dates; images are not otherwise processed.</p></div>
     <p class="intro">Compare observations from three events by date and image type. Drag the divider to reveal each image.</p>
   </header>
   <section class="explorer" aria-label="Satellite image comparison">
@@ -96,6 +103,19 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px s
       <div class="zoom-controls" aria-label="Image zoom controls"><button id="zoom-in" type="button" aria-label="Zoom in">+</button><button id="zoom-out" type="button" aria-label="Zoom out">−</button><button id="zoom-reset" type="button">Reset</button></div>
     </div>
     <p class="zoom-hint">Zoom with the buttons or scroll; hold Shift and drag to pan.</p>
+    <div id="color-key" class="color-key" aria-label="False color key">
+      <span class="key-title">False color key (approximate)</span>
+      <ul>
+        <li><i style="background:#3cb043"></i>Vegetation</li>
+        <li><i style="background:#7b3222"></i>Burn scar</li>
+        <li><i style="background:#0c1220"></i>Water, flooding</li>
+        <li><i style="background:#c8ad85"></i>Bare soil, dry land</li>
+        <li><i style="background:#f2f5f4"></i>Cloud</li>
+        <li><i style="background:#45cde3"></i>Ice cloud, snow</li>
+        <li><i style="background:#8fc0c8"></i>Smoke</li>
+        <li><i style="background:#ff7a2e"></i>Active fire</li>
+      </ul>
+    </div>
     <div class="slider-heading"><label for="divider">Image divider</label><span>Drag the divider or use the slider</span></div>
     <input id="divider" type="range" min="0" max="100" value="50" aria-label="Move image divider" aria-valuetext="50% left image">
     <div class="slider-ends"><span>More right image</span><span>More left image</span></div>
@@ -104,14 +124,12 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px s
   </section>
   <section class="writeup" aria-labelledby="writeup-title">
     <h2 id="writeup-title">Project writeup</h2>
-    <p>Template: replace the prompts below with your team’s own answers.</p>
     <h3>Design decisions</h3>
-    <ul>
-      <li><strong>Visual encodings:</strong> Explain how you chose the imagery, colors, labels, and other visual elements, and what they help viewers understand.</li>
-      <li><strong>Interactions:</strong> Explain why you chose the comparison slider and other controls, and how they support exploration.</li>
-      <li><strong>Alternatives:</strong> Describe the designs or interactions you considered and why you selected this approach.</li>
-    </ul>
+    <p>We used MODIS Terra Imagery from NASA GIBS and made false color (bands 7-2-1) the default. The reason for this decision is because in the natural color, smoke hides a lot of the ground and much of the burn scars blend in with the rest of the landscape. In the 7-2-1, vegetation is bright green, burn scars are red-brown, and water is black, so the changes stand out. However, just the visual is not intuitive because the colors have a lot more contrast than the natural color which is what we see as intuitive. As a result, we added a color key so the viewers can read those colors a lot easier. Within each event, the images cover the same exact area so the differences in the images come from the landscape and not the framing. Each date also has a short note as some of the images are covered by smoke or clouds as it could confuse the reader without it.</p>
+    <p>The main interaction we picked was the swipe divider over two lined-up images of the same place. You can easily drag across one spot and watch it change. The swipe divider seemed to be the most intuitive as it allowed the viewer to manually change between the two dates. We also have other interactions where it allows the viewer to pick the event and the dates to compare with more freedom. Lastly, the natural color was kept as an option using a toggle between false color and natural color. This was used because it helps the viewer see the real landscape which could help people recognize the landscape easier.</p>
+    <p>We had other alternatives that we ended up passing on. For example, we had a version where there was side-by-side images, an opacity blend, an animated timeline, and a separate zoom view. However, these side-by-side images made your eyes jump back and forth from both the images. Additionally, the opacity blend mixed clouds and smoke from different days into colors that were misleading. The timeline made the unevenly spaced dates look more like a smooth progression. Therefore, we ultimately chose the swipe because it made comparing two dates a lot easier. The landscapes all lined up so the changes in the landscape can be more accurately interpreted. But some things were kept, such as the zoom, so viewers can get a closer look at specific areas of the landscape.</p>
     <h3>Development process</h3>
+    <p>Template: replace the prompts below with your team’s own answers.</p>
     <ul>
       <li><strong>Team contributions:</strong> Describe how the work was divided among team members.</li>
       <li><strong>Time spent:</strong> Estimate the total development time in people-hours.</li>
@@ -177,7 +195,8 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px s
     d3.select('#left-label').text(`LEFT · ${left[1]}`); d3.select('#right-label').text(`RIGHT · ${right[1]}`);
     d3.select('#earlier-note').text(left[2]); d3.select('#later-note').text(right[2]);
     svg.attr('aria-label',`${current.title}: left image ${left[1]}, right image ${right[1]}, ${band === 'true' ? 'natural color' : 'false color bands 7-2-1'}.`);
-    d3.select('#band-description').text(band === 'true' ? 'Natural color imagery uses visible light.' : 'False color combines shortwave infrared, near infrared, and red light (bands 7-2-1). Colors do not have the same meaning as in natural color.');
+    d3.select('#band-description').text(band === 'true' ? 'Natural color imagery uses visible light, close to what the eye would see. Switch to false color to see the color key.' : 'False color combines shortwave infrared, near infrared, and red light (bands 7-2-1). Colors do not have the same meaning as in natural color; see the key above.');
+    d3.select('#color-key').property('hidden', band === 'true');
   }
   function selectEvent(id) {
     current = events.find(e => e.id === id);
