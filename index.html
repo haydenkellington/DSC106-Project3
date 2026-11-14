@@ -63,7 +63,13 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px s
  .viewer svg { max-height: none; } .image-label { top: 7px; font-size: 10px; padding: 5px; max-width: 44%; } .image-label.left { left: 7px; } .image-label.right { right: 7px; } .zoom-controls { right: 7px; bottom: 7px; } .zoom-controls button { height: 32px; min-width: 32px; }
  .details { grid-template-columns: 1fr; gap: 10px; }
 }
-  </style>
+  .writeup { margin-top: 28px; padding: 22px; background: #fff; border: 1px solid #d1d7d9; }
+.writeup h2 { margin: 0 0 8px; }
+.writeup h3 { font-size: 15px; margin: 22px 0 8px; }
+.writeup p, .writeup li { color: #506068; font-size: 14px; line-height: 1.6; }
+.writeup ul { margin: 0; padding-left: 21px; }
+.writeup li + li { margin-top: 8px; }
+</style>
   <script src="assets/d3.v7.min.js"></script>
 
 </head>
@@ -95,6 +101,22 @@ button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px s
     <div class="slider-ends"><span>More right image</span><span>More left image</span></div>
     <div class="details"><p id="band-description"></p><p>Each pair uses the same geographic extent and image type. Dates are selected observations, not a continuous sequence; a later image may show an event still in progress.</p><p>Clouds, smoke, seasonal conditions and lighting can change appearances. These rendered images are not measurements of damage or change.</p></div>
     <footer><span>MODIS imagery via <a href="https://nasa-gibs.github.io/gibs-api-docs/access-basics/">NASA GIBS</a></span><a id="source" target="_blank" rel="noopener noreferrer">NASA event context ↗</a></footer>
+  </section>
+  <section class="writeup" aria-labelledby="writeup-title">
+    <h2 id="writeup-title">Project writeup</h2>
+    <p>Template: replace the prompts below with your team’s own answers.</p>
+    <h3>Design decisions</h3>
+    <ul>
+      <li><strong>Visual encodings:</strong> Explain how you chose the imagery, colors, labels, and other visual elements, and what they help viewers understand.</li>
+      <li><strong>Interactions:</strong> Explain why you chose the comparison slider and other controls, and how they support exploration.</li>
+      <li><strong>Alternatives:</strong> Describe the designs or interactions you considered and why you selected this approach.</li>
+    </ul>
+    <h3>Development process</h3>
+    <ul>
+      <li><strong>Team contributions:</strong> Describe how the work was divided among team members.</li>
+      <li><strong>Time spent:</strong> Estimate the total development time in people-hours.</li>
+      <li><strong>Process:</strong> Describe how development went and which aspects took the most time.</li>
+    </ul>
   </section>
 </main>
 <script>
